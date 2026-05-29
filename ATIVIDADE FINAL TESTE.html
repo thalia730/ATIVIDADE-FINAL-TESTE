@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <title>
+        ATIVIDADE FINAL TESTE
+    </title>
+</head>
+
+<body>
+    <h2>
+        CALCULADORA DE ÁREA QUADRADA
+    </h2>
+    <input type="number" id="base" placeholder="Base">
+    <input type="number" id="altura" placeholder="Altura">
+
+    <br><br>
+
+    <button id="calculo" onclick="calcular()">Calcular</button>
+
+    <div id="resultado"></div>
+
+    <button id="testeUnitario" onclick="testeUnitario()">Teste Unitário</button>
+    <button id="testeComponente" onclick="testeComponente()">Teste de Componente</button>
+    <button onclick="limparTestes()">Limpar Testes</button>
+
+    <div id="resultadoTeste"></div>
+
+    <script>
+        function calcular() {
+            let base = document.getElementById("base").value;
+            let altura = document.getElementById("altura").value;
+
+            let area = base * altura;
+
+            document.getElementById("resultado").innerText = "Área = " + area;
+        }
+
+        function calcularArea(base, altura) {
+            return base * altura;
+        }
+
+        function testeUnitario() {
+
+            let passou = 0;
+            let falhou = 0;
+
+            let num = 50;
+            let resposta = calcularArea(5, 10);
+
+            let teste = document.getElementById("resultadoTeste");
+
+            if (num === resposta) {
+                teste.innerHTML += "<p> -Teste Unitário PASSOU</p>";
+                passou++;
+            } else {
+                teste.innerHTML += "<p> -Teste Unitário FALHOU</p>";
+                falhou++;
+            }
+
+            if (calcularArea(0, 10) === 0) {
+                teste.innerHTML += "-Zero PASSOU <br>";
+                passou++;
+            } else {
+                teste.innerHTML += "-Zero FALHOU <br>";
+                 falhou++;
+            }
+
+            let negativo = calcularArea(-5, 10);
+            if (negativo < 0) {
+                teste.innerHTML += "-Negativo detectado <br>";
+            }
+
+            let texto = calcularArea("a", 10);
+            if (isNaN(texto)) {
+                teste.innerHTML += "-Texto inválido detectado <br>";
+            }
+
+            let grande = calcularArea(1000000, 2000000);
+            if (grande === 2000000000000) {
+                teste.innerHTML += "-Teste números grandes PASSOU <br>";
+                passou++;
+            } else {
+                teste.innerHTML += "-Teste números grandes FALHOU <br>";
+                 falhou++;
+            }
+
+            let baseVazia = "";
+            let alturaVazia = "";
+
+            if (baseVazia === "" || alturaVazia === "") {
+                teste.innerHTML += "-Teste vazio detectado <br>";
+            } else {
+                teste.innerHTML += "-Teste vazio FALHOU <br>";
+            }
+
+            teste.innerHTML += "<br>📊 Passaram: " + passou + " | Falharam: " + falhou + "<br><br>";
+        }
+
+
+        function testeComponente() {
+
+            let passou = 0;
+            let falhou = 0;
+            
+            let inputBase = document.getElementById("base");
+            let inputAltura = document.getElementById("altura");
+            let botao = document.getElementById("testeComponente");
+
+            let teste = document.getElementById("resultadoTeste");
+
+            if (inputBase && inputAltura && botao) {
+                teste.innerHTML += "<p> -Teste de Componente PASSOU</p>";
+                passou++
+            } else {
+                teste.innerHTML += "<p> -Teste de Componente FALHOU</p>";
+                falhou++
+            }
+
+            let base = document.getElementById("base");
+            let altura = document.getElementById("altura");
+
+            base.value = "";
+            altura.value = "";
+
+            if (base.value === "" && altura.value === "") {
+                teste.innerHTML += "-Campos vazios detectados <br>";
+            } else {
+                teste.innerHTML += "-Teste de vazio FALHOU <br>";
+            }
+
+            // permite o vazio
+            base.value = "";
+            altura.value = "";
+
+            calcular();
+
+            let resultado = document.getElementById("resultado").innerText;
+
+            if (resultado.includes("Área")) {
+                teste.innerHTML += "-Calculou mesmo com vazio <br>";
+            } else {
+                teste.innerHTML += "-Bloqueou cálculo com vazio <br>";
+            }
+
+            // bloqueia vazio
+            function calcularCorrigido() {
+                let base = document.getElementById("base").value;
+                let altura = document.getElementById("altura").value;
+
+                if (base === "" || altura === "") {
+                    document.getElementById("resultado").innerText = "Preencha os campos!";
+                    return;
+                }
+
+                let area = base * altura;
+
+                document.getElementById("resultado").innerText = "Área = " + area;
+            }
+            inputBase.value = "";
+            inputAltura.value = "";
+
+            calcularCorrigido();
+
+            let resultado2 = document.getElementById("resultado").innerText;
+
+            if (resultado2.includes("Preencha")) {
+                teste.innerHTML += "-Bloqueou cálculo com vazio <br>";
+            }
+
+            teste.innerHTML += "<br>📊 Passaram: " + passou + " | Falharam: " + falhou + "<br><br>";
+        }
+
+
+        function limparTestes() {
+            document.getElementById("resultadoTeste").innerHTML = "";
+        }
+    </script>
+</body>
+
+</html>

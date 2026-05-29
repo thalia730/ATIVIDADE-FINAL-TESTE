@@ -1,0 +1,42 @@
+Plano de Testes (Test Plan) — Modelo em Branco
+
+Preencha cada item conforme o sistema ou exercício desenvolvido.
+
+
+1. Objetivo dos Testes: Definir o que será validado como, funcionalidades e requisitos e porque o teste é necessário.
+
+
+
+2. Metodologia de Teste: É o processo para organizar os testes que pode incluir práticas, processos e a integração com desenvolvimento, alinhado às práticas do ISTQB.
+
+
+
+3. Escopo e Testes: Funcionalidades e módulos incluídos e excluídos dos testes, com justificativas.
+4. Tipos de Testes Aplicados	Testes funcionais, não funcionais. Categoria ou foco específico do teste dentro do processo, relacionado ao que está sendo testado.
+
+
+
+5. Forma de Execução: Como os testes serão realizados:
+manuais, automatizados ou híbridos.
+
+
+
+6. Ambiente de Teste: Descrição da infraestrutura: hardware, software, rede, banco de dados, dados de teste.
+
+
+7. Papéis e Responsabilidades: Define os envolvidos e suas funções (ex: QA, dev, PO, gerente de testes).
+
+
+
+8. Riscos e Contingências: Obstáculos e ações preventivas ou corretivas para garantir a execução dos testes.
+
+9. Ferramentas de Teste: Softwares e frameworks (ex: TestLink, Selenium, Cypress, Jenkins, GitHub Actions).
+
+10. Métricas de Qualidade: Indicadores para avaliar os testes: cobertura, taxa de sucesso, número de defeitos, densidade de bugs
+
+
+
+Aluno: Thalia Jennifer Barbosa
+Turma: Jovem Programador 2026
+UC3: Teste e Manutenção de Sistema de Informação
+Data: 28 / 05 / 2026
