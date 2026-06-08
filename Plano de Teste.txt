@@ -2,41 +2,163 @@ Plano de Testes (Test Plan) — Modelo em Branco
 
 Preencha cada item conforme o sistema ou exercício desenvolvido.
 
+//PLANO DE TESTE CALCULADORA ÁREA QUADRADA
 
-1. Objetivo dos Testes: Definir o que será validado como, funcionalidades e requisitos e porque o teste é necessário.
+1. Objetivo dos Testes
 
-
-
-2. Metodologia de Teste: É o processo para organizar os testes que pode incluir práticas, processos e a integração com desenvolvimento, alinhado às práticas do ISTQB.
-
+O objetivo foi verificar se a calculadora de área está funcionando corretamente, realizando o cálculo de base × altura e exibindo o resultado de forma correta na tela.
 
 
-3. Escopo e Testes: Funcionalidades e módulos incluídos e excluídos dos testes, com justificativas.
-4. Tipos de Testes Aplicados	Testes funcionais, não funcionais. Categoria ou foco específico do teste dentro do processo, relacionado ao que está sendo testado.
+2. Metodologia de Teste
+
+Os testes foram feitos seguindo uma ideia simples baseada em boas práticas, utilizando:
+* Testes unitários para verificar o cálculo
+* Testes de componente para validar a interação com a interface
+
+
+ 3. Escopo e Testes
+
+Incluído:
+* Cálculo da área
+* Testes com valores válidos e inválidos
+* Verificação da exibição do resultado
+Não incluído:
+* Banco de dados
+* Testes de desempenho
 
 
 
-5. Forma de Execução: Como os testes serão realizados:
-manuais, automatizados ou híbridos.
+4. Tipos de Testes Aplicados
+* Testes funcionais (verificar se o cálculo está correto)
+* Testes básicos de usabilidade (facilidade de uso)
 
 
 
-6. Ambiente de Teste: Descrição da infraestrutura: hardware, software, rede, banco de dados, dados de teste.
+5. Forma de Execução
+
+Os testes foram feitos de duas formas:
+* Manualmente, utilizando o navegador
+* Automatizados, com funções em JavaScript
 
 
-7. Papéis e Responsabilidades: Define os envolvidos e suas funções (ex: QA, dev, PO, gerente de testes).
+
+6. Ambiente de Teste
+
+* Computador pessoal
+* Navegador Edge
+* HTML e JavaScript
+* GitHub para versionamento
 
 
 
-8. Riscos e Contingências: Obstáculos e ações preventivas ou corretivas para garantir a execução dos testes.
+7. Papéis e Responsabilidades
 
-9. Ferramentas de Teste: Softwares e frameworks (ex: TestLink, Selenium, Cypress, Jenkins, GitHub Actions).
+* Desenvolvimento e testes realizados pela mesma pessoa (desenvolvedor)
 
-10. Métricas de Qualidade: Indicadores para avaliar os testes: cobertura, taxa de sucesso, número de defeitos, densidade de bugs
+
+8. Riscos e Contingências
+
+Riscos:
+* Campos vazios
+* Entrada de texto no lugar de números
+* Valores negativos
+Soluções:
+* Validação dos dados
+* Uso de testes para identificar erros
+
+
+ 9. Ferramentas de Teste
+
+* Navegador
+* JavaScript
+* GitHub
+
+ 10. Métricas de Qualidade
+
+* Quantidade de testes que passaram ou falharam
+* Testes com diferentes tipos de entrada
+
+
+
+//PLANO DE TESTE CALCULADORA JUROS
+
+1. Objetivo dos Testes
+
+O objetivo foi verificar se a calculadora de juros simples calcula corretamente o valor final com base em uma porcentagem e se trata corretamente entradas inválidas.
+
+
+2. Metodologia de Teste
+
+Foram utilizados:
+* Testes unitários para validar o cálculo
+* Testes de componente para verificar o funcionamento na interface
+
+
+3. Escopo e Testes
+
+ Incluído:
+* Cálculo de juros simples
+* Testes com valores válidos
+* Validação de campos vazios e inválidos
+Não incluído:
+* Juros compostos
+* Integrações externas
+
+
+4. Tipos de Testes Aplicados
+
+* Testes funcionais (cálculo correto)
+* Testes de usabilidade básica
+
+
+5. Forma de Execução
+
+* Testes manuais no navegador
+* Testes automatizados com JavaScript
+
+
+6. Ambiente de Teste
+
+* Computador pessoal
+* Navegador Edge
+* HTML e JavaScript
+* GitHub
+
+
+
+7. Papéis e Responsabilidades
+
+* O desenvolvimento e os testes foram realizados pela mesma pessoa
+
+
+ 8. Riscos e Contingências
+
+Riscos:
+* Campos não preenchidos
+* Valores inválidos
+* Erro no cálculo
+Soluções:
+* Validação com JavaScript
+* Separação da lógica de cálculo
+* Testes automatizados
+
+
+9. Ferramentas de Teste
+
+* Navegador
+* JavaScript
+* GitHub
+
+
+10. Métricas de Qualidade
+
+* Quantidade de testes aprovados
+* Número de erros encontrados
+* Testes com diferentes cenários
 
 
 
 Aluno: Thalia Jennifer Barbosa
 Turma: Jovem Programador 2026
 UC3: Teste e Manutenção de Sistema de Informação
-Data: 28 / 05 / 2026
+Data: 08 / 06 / 2026

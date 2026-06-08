@@ -16,7 +16,7 @@
 
     <br><br>
 
-    <button id="calculo" onclick="calcular()">Calcular</button>
+    <button onclick="calcularAreaTela()">Calcular</button>
 
     <div id="resultado"></div>
 
@@ -26,8 +26,27 @@
 
     <div id="resultadoTeste"></div>
 
+    <h2>
+        CALCULADORA DE JUROS
+    </h2>
+
+    <input type="number" id="valor" placeholder="Valor da conta">
+    <input type="number" id="juros" placeholder="Juros (%)">
+
+    <br><br>
+
+    <button onclick="calcularJuros()">Calcular Juros</button>
+
+    <div id="resultadoJuros"></div>
+
+    <button onclick="testeUnitarioJuros()">Teste Unitário Juros</button>
+    <button onclick="testeComponenteJuros()">Teste Componente Juros</button>
+    <button onclick="limparTesteJuros()">Limpar Testes</button>
+
+    <div id="resultadoTesteJuros"></div>
+
     <script>
-        function calcular() {
+        function calcularAreaTela() {
             let base = document.getElementById("base").value;
             let altura = document.getElementById("altura").value;
 
@@ -35,7 +54,6 @@
 
             document.getElementById("resultado").innerText = "Área = " + area;
         }
-
         function calcularArea(base, altura) {
             return base * altura;
         }
@@ -63,7 +81,7 @@
                 passou++;
             } else {
                 teste.innerHTML += "-Zero FALHOU <br>";
-                 falhou++;
+                falhou++;
             }
 
             let negativo = calcularArea(-5, 10);
@@ -82,7 +100,7 @@
                 passou++;
             } else {
                 teste.innerHTML += "-Teste números grandes FALHOU <br>";
-                 falhou++;
+                falhou++;
             }
 
             let baseVazia = "";
@@ -102,7 +120,7 @@
 
             let passou = 0;
             let falhou = 0;
-            
+
             let inputBase = document.getElementById("base");
             let inputAltura = document.getElementById("altura");
             let botao = document.getElementById("testeComponente");
@@ -133,7 +151,7 @@
             base.value = "";
             altura.value = "";
 
-            calcular();
+            calcularAreaTela();
 
             let resultado = document.getElementById("resultado").innerText;
 
@@ -175,7 +193,135 @@
         function limparTestes() {
             document.getElementById("resultadoTeste").innerHTML = "";
         }
+
+
+
+        //CALCULADORA JUROS
+        function calcularJurosValor(valor, juros) {
+            return valor + (valor * (juros / 100));
+        }
+
+        function calcularJuros() {
+            let valor = parseFloat(document.getElementById("valor").value);
+            let juros = parseFloat(document.getElementById("juros").value);
+
+            if (isNaN(valor) || isNaN(juros)) {
+                document.getElementById("resultadoJuros").innerText = "Preencha corretamente!";
+                return;
+            }
+
+            let valorFinal = calcularJurosValor(valor, juros);
+
+            document.getElementById("resultadoJuros").innerText =
+                "Valor final: R$ " + valorFinal.toFixed(2);
+        }
+
+        function testeUnitarioJuros() {
+
+            let passou = 0;
+            let falhou = 0;
+
+            let teste = document.getElementById("resultadoTesteJuros");
+
+            // teste principal
+            if (calcularJurosValor(100, 10) === 110) {
+                teste.innerHTML += "✔ 100 + 10% PASSOU <br>";
+                passou++;
+            } else {
+                teste.innerHTML += "❌ 100 + 10% FALHOU <br>";
+                falhou++;
+            }
+
+            // zero
+            if (calcularJurosValor(0, 10) === 0) {
+                teste.innerHTML += "✔ Zero PASSOU <br>";
+                passou++;
+            } else {
+                teste.innerHTML += "❌ Zero FALHOU <br>";
+                falhou++;
+            }
+
+            // juros zero
+            if (calcularJurosValor(100, 0) === 100) {
+                teste.innerHTML += "✔ Juros 0% PASSOU <br>";
+                passou++;
+            } else {
+                teste.innerHTML += "❌ Juros 0% FALHOU <br>";
+                falhou++;
+            }
+
+            // negativo
+            let negativo = calcularJurosValor(-100, 10);
+            if (negativo < 0) {
+                teste.innerHTML += "✔ Negativo detectado <br>";
+            }
+
+            // texto
+            let texto = calcularJurosValor("a", 10);
+            if (isNaN(texto)) {
+                teste.innerHTML += "✔ Texto inválido detectado <br>";
+            }
+
+            teste.innerHTML += `<br>📊 Passaram: ${passou} | Falharam: ${falhou}<br><br>`;
+        }
+
+        function testeComponenteJuros() {
+
+            let passou = 0;
+            let falhou = 0;
+
+            let valor = document.getElementById("valor");
+            let juros = document.getElementById("juros");
+            let resultado = document.getElementById("resultadoJuros");
+            let teste = document.getElementById("resultadoTesteJuros");
+
+            // existência dos elementos
+            if (valor && juros && resultado) {
+                teste.innerHTML += "✔ Componentes existem <br>";
+                passou++;
+            } else {
+                teste.innerHTML += "❌ Componentes FALHOU <br>";
+                falhou++;
+            }
+
+            // teste com valores válidos
+            valor.value = 100;
+            juros.value = 10;
+
+            calcularJuros();
+
+            if (resultado.innerText.includes("110")) {
+                teste.innerHTML += "✔ Cálculo na tela PASSOU <br>";
+                passou++;
+            } else {
+                teste.innerHTML += "❌ Cálculo na tela FALHOU <br>";
+                falhou++;
+            }
+
+            // teste vazio
+            valor.value = "";
+            juros.value = "";
+
+            calcularJuros();
+
+            if (resultado.innerText.includes("Preencha")) {
+                teste.innerHTML += "✔ Validação de vazio PASSOU <br>";
+                passou++;
+            } else {
+                teste.innerHTML += "❌ Validação de vazio FALHOU <br>";
+                falhou++;
+            }
+
+            teste.innerHTML += `<br>📊 Passaram: ${passou} | Falharam: ${falhou}<br><br>`;
+
+            document.getElementById("resultadoJuros").innerText = "";
+        }
+
+        function limparTesteJuros() {
+            document.getElementById("resultadoTesteJuros").innerHTML = "";
+        }
     </script>
+
 </body>
 
 </html>
